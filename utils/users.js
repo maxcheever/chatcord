@@ -6,7 +6,7 @@ function userJoin(id, username, room) {
 
     users.push(user);
 
-    return users;
+    return user;
 }
 
 // Get current user
