@@ -15,11 +15,14 @@ const botName = 'ChatCord Bot';
 
 // Run when client connects
 io.on('connection', socket => {
-    // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    socket.on('joinRoom', ({ username, room }) => {
+        // Welcome current user
+        socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
 
-    //Broadcast when a user conects
-    socket.broadcast.emit('message', formatMessage(botName, 'A user has joined the chat'));
+        //Broadcast when a user conects
+        socket.broadcast.emit('message', formatMessage(botName, 'A user has joined the chat'));
+
+    });
 
     // Runs when client disconnects
     socket.on('disconnect', () =>{
